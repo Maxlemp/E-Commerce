@@ -1,0 +1,7 @@
+<label for="" class="my-1">{{title}}: &nbsp;</label>
+    <select class="from-control" (change)="filtrationFunction($event)">
+      <option value="all" selected>All</option>
+      <option value="{{ option }}" *ngFor="let option of data">
+        {{ option }}
+      </option>
+</select>

@@ -9,6 +9,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class SelectComponent {
  @Input() data:any
  @Input() title:any
+ @Input() all:boolean=true;
+ @Input() select='';
  @Output() selectedValue = new EventEmitter()
 
 

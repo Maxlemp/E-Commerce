@@ -4,10 +4,9 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-
 export class ProductsService {
   constructor(private http: HttpClient) {}
-  item:any;
+  item: any;
   getAllProducts() {
     return this.http.get('https://fakestoreapi.com/products');
   }
@@ -20,7 +19,14 @@ export class ProductsService {
       'https://fakestoreapi.com/products/category/' + keyword
     );
   }
-  getProductById(id:any) {
-    return this.http.get('https://fakestoreapi.com/products/' +id);
+  getProductById(id: any) {
+    return this.http.get('https://fakestoreapi.com/products/' + id);
+  }
+
+  createProduct(model: any) {
+    return this.http.post('https://fakestoreapi.com/products/', model);
+  }
+  updateProduct(model:any, id:any){
+    return this.http.put('https://fakestoreapi.com/products/'+id, model)
   }
 }

@@ -1,5 +1,6 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/shared/Services/products.service';
 import { Product } from '../../models/products';
 
@@ -9,7 +10,7 @@ import { Product } from '../../models/products';
   styleUrls: ['./all-products.component.scss'],
 })
 export class AllProductsComponent implements OnInit {
-  index:any
+  index: any;
   ngOnInit(): void {
     this.getProducts();
     this.getCategories();
@@ -19,7 +20,8 @@ export class AllProductsComponent implements OnInit {
   categories: string[] = [];
   loading: boolean = false;
   cartProducts: any[] = [];
-  constructor(private service: ProductsService) {}
+  form!: FormGroup;
+  constructor(private service: ProductsService, private build: FormBuilder) {}
 
   getProducts() {
     this.loading = true;
@@ -40,7 +42,6 @@ export class AllProductsComponent implements OnInit {
       (res: any) => {
         this.categories = res;
         this.loading = false;
-        console.log(res);
       },
       (error) => {
         this.loading = false;
@@ -67,31 +68,29 @@ export class AllProductsComponent implements OnInit {
   addToCart(event: any) {
     if ('cart' in localStorage) {
       this.cartProducts = JSON.parse(localStorage.getItem('cart')!);
-      let exist = this.cartProducts.find((item) => item.item.id == event.item.id);
-      console.log(event.quantity)
+      let exist = this.cartProducts.find(
+        (item) => item.item.id == event.item.id
+      );
       if (exist) {
         alert('Product Already Added to Cart!');
       } else {
         this.cartProducts.push(event);
-        console.log(event);
         localStorage.setItem('cart', JSON.stringify(this.cartProducts));
       }
     } else {
       this.cartProducts.push(event);
-      console.log(event);
       localStorage.setItem('cart', JSON.stringify(this.cartProducts));
     }
-    
   } /*JSON.stringify() // saves data just like u sent it
   JSON.parse() // gets data just like it's saved in the localStorage*/
   //this.carProducts= localStorage.getItem("cart")
 
-//   deleteNullProduct(event:any,index:number){
-//     if(item.quantity === 0 ){
+  //   deleteNullProduct(event:any,index:number){
+  //     if(item.quantity === 0 ){
 
-//       this.cartProducts.splice(index,1)
-//       localStorage.setItem("cart", JSON.stringify(this.cartProducts))
-//     }
-//  console.log(event.quantity)
-//     }
+  //       this.cartProducts.splice(index,1)
+  //       localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+  //     }
+  //  console.log(event.quantity)
+  //     }
 }

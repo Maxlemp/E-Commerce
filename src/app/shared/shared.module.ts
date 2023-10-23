@@ -5,9 +5,10 @@ import { ProductsModule } from './products/products.module';
 import { HeaderComponent } from './products/components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartsModule } from './carts/carts.module';
 import { CartComponent } from './carts/components/cart/cart.component';
+import { MarketAdminModule } from './products/components/market-admin/market-admin/market-admin.module';
 
 @NgModule({
   declarations: [CartComponent],
@@ -17,7 +18,9 @@ import { CartComponent } from './carts/components/cart/cart.component';
     RouterModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    MarketAdminModule
   ],
-  exports: [HeaderComponent, FormsModule],
+  exports: [HeaderComponent, FormsModule, ReactiveFormsModule],
 })
 export class SharedModule {}

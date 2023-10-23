@@ -1,0 +1,61 @@
+.cartBox {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin: 50px 0;
+  .table {
+    .quantity {
+      display: flex;
+      justify-content: space-between;
+      input {
+        margin: 0 20px;
+      }
+    }
+    tbody {
+      border-top: 3px solid #1f991f;
+      border-bottom: 1px solid #1f991f;
+      tr {
+        td {
+          border-bottom: 0;
+          text-align: center;
+          vertical-align: middle;
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+          }
+        }
+      }
+      input {
+        text-align: center;
+      }
+    }
+  }
+  .headCart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      font: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease-in;
+      &:hover {
+        background-color: #1f991f;
+        color: #fff !important;
+        box-shadow: 0px 5px 10px rgba($color: #000, $alpha: 0.3);
+      }
+    }
+  }
+}
+textarea{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 120px;
+    min-height: 120px;
+}
+.modal{
+    img{
+        width:100%;
+        max-height: 85px;
+    }
+}
